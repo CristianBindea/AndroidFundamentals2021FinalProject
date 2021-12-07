@@ -6,14 +6,14 @@ import androidx.lifecycle.ViewModel;
 
 public class AllTasksViewModel extends ViewModel {
 
-    private MutableLiveData<String> textAllTasks;
+    private MutableLiveData<String> textTitle;
 
     public AllTasksViewModel() {
-        textAllTasks = new MutableLiveData<>();
-        textAllTasks.setValue("ALL TASKS DONE");
+        textTitle = new MutableLiveData<>();
+        textTitle.setValue("TASKS DONE");
     }
 
-    public LiveData<String> getTextAllTasks() {
-        return textAllTasks;
+    public LiveData<String> getTextTextTitle() {
+        return textTitle;
     }
 }

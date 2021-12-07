@@ -6,20 +6,15 @@ import androidx.lifecycle.ViewModel;
 
 public class NewTaskViewModel extends ViewModel {
 
-    private MutableLiveData<String> textStart;
-    private MutableLiveData<String> textEnd;
+    private MutableLiveData<String> testTitle;
 
     public NewTaskViewModel() {
-        textStart = new MutableLiveData<>();
-        textStart.setValue("Time Start");
-        textEnd = new MutableLiveData<>();
-        textEnd.setValue("Time End");
+        testTitle = new MutableLiveData<>();
+        testTitle.setValue("ADD A NEW TASK");
     }
 
-    public LiveData<String> getTextEnd() {
-        return textStart;
+    public LiveData<String> getTextTitle() {
+        return testTitle;
     }
-
-    public MutableLiveData<String> getTextStart() { return textStart; }
 }
 

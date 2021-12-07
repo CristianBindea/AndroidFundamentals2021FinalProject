@@ -14,12 +14,12 @@
     <fragment
         android:id="@+id/nav_all_tasks"
         android:name="com.cristianbindea.androidfundamentals2021finalproject.ui.alltasks.AllTasksFragment"
-        android:label="@string/menu_gallery"
+        android:label="@string/all_task"
         tools:layout="@layout/fragment_all_tasks" />
 
     <fragment
         android:id="@+id/nav_new_task"
         android:name="com.cristianbindea.androidfundamentals2021finalproject.ui.newtask.NewTaskFragment"
-        android:label="@string/menu_slideshow"
+        android:label ="@string/new_task"
         tools:layout="@layout/fragment_new_task" />
 </navigation>

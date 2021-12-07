@@ -27,22 +27,13 @@ public class NewTaskFragment extends Fragment {
         binding = FragmentNewTaskBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        final TextView textStart = binding.textStart;
-        newTaskViewModel.getTextStart().observe(getViewLifecycleOwner(), new Observer<String>() {
+        final TextView textTitle = binding.textTitle;
+        newTaskViewModel.getTextTitle().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
-                textStart.setText(s);
+                textTitle.setText(s);
             }
         });
-
-        final TextView textEnd = binding.textEnd;
-        newTaskViewModel.getTextEnd().observe(getViewLifecycleOwner(), new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                textEnd.setText(s);
-            }
-        });
-
 
         return root;
     }

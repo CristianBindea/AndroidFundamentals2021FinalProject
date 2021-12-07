@@ -21,14 +21,14 @@ public class AllTasksFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        allTasksViewModel =
-                new ViewModelProvider(this).get(AllTasksViewModel.class);
+
+        allTasksViewModel = new ViewModelProvider(this).get(AllTasksViewModel.class);
 
         binding = FragmentAllTasksBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        final TextView textView = binding.textAllTasks;
-        allTasksViewModel.getTextAllTasks().observe(getViewLifecycleOwner(), new Observer<String>() {
+        final TextView textView = binding.textTitle;
+        allTasksViewModel.getTextTextTitle().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
                 textView.setText(s);
