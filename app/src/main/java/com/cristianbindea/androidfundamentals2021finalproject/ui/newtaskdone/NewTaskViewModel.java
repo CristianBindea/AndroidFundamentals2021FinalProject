@@ -1,4 +1,4 @@
-package com.cristianbindea.androidfundamentals2021finalproject.ui.newtask;
+package com.cristianbindea.androidfundamentals2021finalproject.ui.newtaskdone;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;

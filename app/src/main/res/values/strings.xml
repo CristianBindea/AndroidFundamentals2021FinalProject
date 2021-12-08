@@ -13,5 +13,5 @@
     <string name="about_the_app">About the app</string>
     <string name="contact_me">Contact me</string>
     <string name="new_task">New Task</string>
-    <string name="all_task">All tasks</string>
+    <string name="all_task_done">All tasks done</string>
 </resources>

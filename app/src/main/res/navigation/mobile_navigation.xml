@@ -9,17 +9,53 @@
         android:id="@+id/nav_home"
         android:name="com.cristianbindea.androidfundamentals2021finalproject.ui.home.HomeFragment"
         android:label="@string/menu_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_nav_home_to_nav_new_task"
+            app:destination="@id/nav_new_task" />
+        <action
+            android:id="@+id/action_nav_home_to_nav_all_tasks"
+            app:destination="@id/nav_all_tasks" />
+        <action
+            android:id="@+id/action_nav_home_to_nav_about"
+            app:destination="@id/nav_about" />
+        <action
+            android:id="@+id/action_nav_home_to_nav_contact"
+            app:destination="@id/nav_contact" />
+    </fragment>
 
     <fragment
         android:id="@+id/nav_all_tasks"
-        android:name="com.cristianbindea.androidfundamentals2021finalproject.ui.alltasks.AllTasksFragment"
-        android:label="@string/all_task"
-        tools:layout="@layout/fragment_all_tasks" />
+        android:name="com.cristianbindea.androidfundamentals2021finalproject.ui.alltasksdone.AllTasksDoneFragment"
+        android:label="@string/all_task_done"
+        tools:layout="@layout/fragment_all_tasks_done" >
+        <action
+            android:id="@+id/action_nav_all_tasks_to_nav_new_task"
+            app:destination="@id/nav_new_task" />
+    </fragment>
 
     <fragment
         android:id="@+id/nav_new_task"
-        android:name="com.cristianbindea.androidfundamentals2021finalproject.ui.newtask.NewTaskFragment"
+        android:name="com.cristianbindea.androidfundamentals2021finalproject.ui.newtaskdone.NewTaskFragment"
         android:label ="@string/new_task"
         tools:layout="@layout/fragment_new_task" />
+    <fragment
+        android:id="@+id/nav_contact"
+        android:name="com.cristianbindea.androidfundamentals2021finalproject.ui.contact.ContactFragment"
+        android:label="Contact"
+        tools:layout="@layout/contact_fragment">
+        <action
+            android:id="@+id/action_nav_contact_to_nav_new_task"
+            app:destination="@id/nav_new_task" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_about"
+        android:name="com.cristianbindea.androidfundamentals2021finalproject.ui.about.AboutFragment"
+        android:label="About"
+        tools:layout="@layout/about_fragment">
+        <action
+            android:id="@+id/action_nav_about_to_nav_new_task"
+            app:destination="@id/nav_new_task" />
+    </fragment>
 </navigation>

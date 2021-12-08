@@ -20,7 +20,7 @@ public class TaskRepository {
     private final LiveData<List<TaskDone>> allTasksDone;
     private final LiveData<List<TaskToDo>> allTasksToDo;
 
-    TaskRepository(Application application) {
+    public TaskRepository(Application application) {
         TaskDatabase db = TaskDatabase.getDatabase(application);
         taskDoneDao = db.taskDoneDao();
         taskToDoDao = db.taskToDoDao();
@@ -29,27 +29,27 @@ public class TaskRepository {
         allTasksToDo = taskToDoDao.getAllTasksToDoOrdered();
     }
 
-    LiveData<List<TaskDone>> getAllTasksDone() {
+    public LiveData<List<TaskDone>> getAllTasksDone() {
         return allTasksDone;
     }
 
-    LiveData<List<TaskToDo>> getAllTasksToDo() {
+    public LiveData<List<TaskToDo>> getAllTasksToDo() {
         return allTasksToDo;
     }
 
-    void insertTaskDone(TaskDone taskDone) {
+    public void insertTaskDone(TaskDone taskDone) {
         TaskDatabase.databaseWriteExecutor.execute(() -> {
             taskDoneDao.insertTaskDone(taskDone);
         });
     }
 
-    void deleteTaskDone(TaskDone taskDone) {
+    public void deleteTaskDone(TaskDone taskDone) {
         TaskDatabase.databaseWriteExecutor.execute(() -> {
             taskDoneDao.deleteTaskDone(taskDone);
         });
     }
 
-    void insertTaskToDo(TaskToDo taskToDo) {
+   public void insertTaskToDo(TaskToDo taskToDo) {
         TaskDatabase.databaseWriteExecutor.execute(() -> {
             taskToDoDao.insertTaskToDo(taskToDo);
         });
