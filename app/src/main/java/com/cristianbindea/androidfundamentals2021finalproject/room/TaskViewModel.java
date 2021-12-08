@@ -39,6 +39,10 @@ public class TaskViewModel extends AndroidViewModel {
         taskRepository.insertTaskDone(taskDone);
     }
 
+    public void updateTaskDone(TaskDone taskDone) {taskRepository.updateTaskDone(taskDone);}
+
+    public void deleteAllTasksDone() {taskRepository.deleteAllTasksDone();}
+
     public void deleteTaskDone(TaskDone taskDone) {
         taskRepository.deleteTaskDone(taskDone);
     }

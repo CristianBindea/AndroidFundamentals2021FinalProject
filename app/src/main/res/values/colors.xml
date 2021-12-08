@@ -6,5 +6,21 @@
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <color name="white">#FFFFFF</color>
+    <!-- Colors for FinalProject -->
+    <color name="light_salmon">#FEA485</color>
+    <color name="orange_coral">#FEC2AE</color>
+
+    <color name="gold_crayola">#F2C078</color>
+    <color name="lemon_meringue">#FAEDCA</color>
+    <color name="tea_green">#C1DBB3</color>
+    <color name="dark_sea_green">#7EBC89</color>
+    <color name="eerite_black">#141414</color>
+    <color name="raisin_black">#2C2F3A</color>
+
+
+
+
+
+
 </resources>

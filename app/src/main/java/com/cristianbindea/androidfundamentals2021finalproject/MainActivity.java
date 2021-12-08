@@ -1,13 +1,17 @@
 package com.cristianbindea.androidfundamentals2021finalproject;
 
+
 import android.os.Bundle;
 import android.view.View;
 import android.view.Menu;
 
 import com.cristianbindea.androidfundamentals2021finalproject.databinding.ActivityMainBinding;
+import com.cristianbindea.androidfundamentals2021finalproject.ui.newtaskdone.NewTaskFragment;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.tabs.TabLayout;
 
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -34,7 +38,11 @@ public class MainActivity extends AppCompatActivity {
         binding.appBarMain2.fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                // Fragment fragment = new NewTaskFragment();
+                //FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+                //fragmentTransaction.replace(R.id.nav_host_fragment_content_main, fragment);
+                //fragmentTransaction.commit();
+        // TODO: 08.12.2021 I was pretty close with this
             }
         });
         DrawerLayout drawer = binding.drawerLayout;
@@ -42,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_home, R.id.nav_all_tasks)
+                R.id.nav_home, R.id.nav_all_tasks, R.id.nav_contact, R.id.nav_about)
                 .setOpenableLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);

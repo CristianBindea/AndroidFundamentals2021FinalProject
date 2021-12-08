@@ -56,7 +56,6 @@ public class AllTasksDoneFragment extends Fragment {
         return view;
     }
 
-
     private void setUpRecyclerView(View view) {
         recyclerViewTaskDone = view.findViewById(R.id.recyclerview_task_done);
         recyclerViewTaskDone.setLayoutManager(new LinearLayoutManager(getActivity()));

@@ -19,27 +19,19 @@ import java.util.List;
 public class AllTasksDoneViewModel extends AndroidViewModel {
 
     private MutableLiveData<String> textTitle;
-    private TaskViewModel taskViewModel;
     private TaskRepository taskRepository;
     private LiveData<List<TaskDone>> allTasksDone;
 
     public AllTasksDoneViewModel(@NonNull Application application) {
         super(application);
-        taskRepository = new TaskRepository(application);
 
         textTitle = new MutableLiveData<>();
         textTitle.setValue("TASKS DONE");
 
-        init();
-    }
-
-    private void init() {
+        taskRepository = new TaskRepository(application);
         allTasksDone = taskRepository.getAllTasksDone();
     }
 
-    public void insertTaskDone(TaskDone taskDone) {
-        taskRepository.insertTaskDone(taskDone);
-    }
 
     public LiveData<List<TaskDone>> getAllTasksDone() {
         return allTasksDone;
@@ -49,12 +41,7 @@ public class AllTasksDoneViewModel extends AndroidViewModel {
         taskRepository.deleteTaskDone(taskDone);
     }
 
-    // public void deleteAllTaskDone(TaskDone taskDone) {
-    //      taskRepository.delete(taskDone);
-    //  }
+    public void deleteAllTaskDone() {taskRepository.deleteAllTasksDone();}
 
-
-    public LiveData<String> getTextTextTitle() {
-        return textTitle;
-    }
+    public LiveData<String> getTextTextTitle() { return textTitle; }
 }

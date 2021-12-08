@@ -49,7 +49,17 @@ public class TaskRepository {
         });
     }
 
-   public void insertTaskToDo(TaskToDo taskToDo) {
+    public void deleteAllTasksDone() {
+        TaskDatabase.databaseWriteExecutor.execute(taskDoneDao::deleteAllTaskDone);
+    }
+
+    public void updateTaskDone(TaskDone taskDone) {
+        TaskDatabase.databaseWriteExecutor.execute(() -> {
+            taskDoneDao.updateTaskDone(taskDone);
+        });
+    }
+
+    public void insertTaskToDo(TaskToDo taskToDo) {
         TaskDatabase.databaseWriteExecutor.execute(() -> {
             taskToDoDao.insertTaskToDo(taskToDo);
         });

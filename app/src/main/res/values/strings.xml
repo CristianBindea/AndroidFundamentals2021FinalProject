@@ -2,8 +2,8 @@
     <string name="app_name">AndroidFundamentals2021FinalProject</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="nav_header_title">Android Studio</string>
-    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_title">Time Tracker</string>
+    <string name="nav_header_subtitle">Android Fundamentals final project</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
 
@@ -14,4 +14,5 @@
     <string name="contact_me">Contact me</string>
     <string name="new_task">New Task</string>
     <string name="all_task_done">All tasks done</string>
+    <string name="select_now_the_end_time">Select now the end time</string>
 </resources>

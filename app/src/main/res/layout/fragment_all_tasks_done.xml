@@ -25,7 +25,7 @@
         android:layout_margin="16dp"
         android:layout_marginEnd="28dp"
         android:layout_marginBottom="32dp"
-        android:contentDescription="Add"
+        android:contentDescription="Add new Task"
         android:minWidth="32dp"
         android:minHeight="32dp"
         app:layout_constraintBottom_toBottomOf="parent"
