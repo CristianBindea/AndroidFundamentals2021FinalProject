@@ -1,5 +1,6 @@
 package com.cristianbindea.androidfundamentals2021finalproject.ui.home;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,14 +22,24 @@ import com.cristianbindea.androidfundamentals2021finalproject.databinding.Fragme
 import com.cristianbindea.androidfundamentals2021finalproject.retrofit.Advice;
 import com.cristianbindea.androidfundamentals2021finalproject.retrofit.AdviceRepository;
 import com.cristianbindea.androidfundamentals2021finalproject.retrofit.OnGetAdviceCallback;
+import com.cristianbindea.androidfundamentals2021finalproject.room.entity.TaskDone;
 import com.cristianbindea.androidfundamentals2021finalproject.ui.newtaskdone.NewTaskFragment;
+
+import org.eazegraph.lib.charts.PieChart;
+import org.eazegraph.lib.models.PieModel;
+
+import java.util.List;
+import java.util.Random;
 
 public class HomeFragment extends Fragment {
 
     private HomeViewModel homeViewModel;
     private FragmentHomeBinding binding;
-    private AdviceRepository adviceRepository;
+
     private Button buttonAdvice;
+    private PieChart pieChart;
+
+    private TextView textAdvice;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -36,20 +47,23 @@ public class HomeFragment extends Fragment {
 
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View view = binding.getRoot();
-        buttonAdvice = view.findViewById(R.id.button_advice);
+        buttonAdvice = binding.buttonAdvice;
+        textAdvice = binding.textAdvice;
+        pieChart = binding.piechart;
 
-        final TextView textView = binding.textHome;
-        homeViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
-            }
+        pieChart.startAnimation();
+        insertPieSlice("Test1", 30);
+        insertPieSlice("Test2", 50);
+        insertPieSlice("Test3", 20);
+
+        homeViewModel.changeAdvice();
+        homeViewModel.getText().observe(getViewLifecycleOwner(), s -> {
+            textAdvice.setText(s);
         });
-
         buttonAdvice.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                askForMoney();
+                homeViewModel.changeAdvice();
             }
         });
         binding.fab.setOnClickListener(new View.OnClickListener() {
@@ -67,26 +81,15 @@ public class HomeFragment extends Fragment {
         return view;
     }
 
+    public void insertPieSlice(String name, int value) {
+        Random rnd = new Random();
+        int color = Color.argb(255, rnd.nextInt(256), rnd.nextInt(256), rnd.nextInt(256));
+        pieChart.addPieSlice(new PieModel(name, value, color));
+    }
+
     @Override
     public void onDestroyView() {
         super.onDestroyView();
         binding = null;
-    }
-
-    private void askForMoney() {
-        adviceRepository = AdviceRepository.getInstance();
-
-        adviceRepository.getAdvice(new OnGetAdviceCallback() {
-            @Override
-            public void onSuccess(Advice advice) {
-                String message = "Advice nr " + advice.getSlip().getId() + ": " + advice.getSlip().getAdvice();
-                Toast.makeText(getActivity(), message, Toast.LENGTH_LONG).show();
-            }
-
-            @Override
-            public void onError() {
-                Toast.makeText(getActivity(), "N-o mers", Toast.LENGTH_LONG).show();
-            }
-        });
     }
 }

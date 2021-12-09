@@ -35,7 +35,7 @@ public interface TaskDoneDao {
     @Delete
     void deleteTaskDone(TaskDone taskDone);
 
-    @Delete
-    void deleteAllTaskDone(TaskDone... tasksDone);
+    @Query("DELETE FROM task_done_table")
+    void deleteAllTaskDone();
 
 }

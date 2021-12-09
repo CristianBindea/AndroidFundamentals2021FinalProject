@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -28,6 +29,7 @@ public class AllTasksDoneFragment extends Fragment {
     private RecyclerView recyclerViewTaskDone;
     private TaskDoneListAdapter adapter;
     private TextView textTitle;
+    private Button buttonClear;
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
@@ -38,13 +40,19 @@ public class AllTasksDoneFragment extends Fragment {
 
         setUpRecyclerView(view);
         textTitle = binding.textTitle;
+        buttonClear = binding.buttonClear;
         allTasksDoneViewModel.getTextTextTitle().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
                 textTitle.setText(s);
             }
         });
-
+        buttonClear.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                allTasksDoneViewModel.deleteAllTaskDone();
+            }
+        });
         binding.fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -54,7 +62,6 @@ public class AllTasksDoneFragment extends Fragment {
                         .replace(R.id.nav_host_fragment_content_main, nextFrag)
                         .setReorderingAllowed(true)
                         .commit();
-
             }
         });
 
