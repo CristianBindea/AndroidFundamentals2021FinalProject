@@ -31,14 +31,14 @@
         android:minWidth="32dp"
         android:minHeight="32dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/ic_drawer_add_new" />
 
     <Button
         android:id="@+id/button_advice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:background="@drawable/rounded_button"
         android:text="Get advice"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.944"
@@ -70,6 +70,7 @@
         android:text="Advice of the day"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:textSize="18sp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

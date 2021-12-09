@@ -47,7 +47,7 @@ public class HomeFragment extends Fragment {
 
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View view = binding.getRoot();
-        buttonAdvice = binding.buttonAdvice;
+        buttonAdvice = view.findViewById(R.id.button_advice);
         textAdvice = binding.textAdvice;
         pieChart = binding.piechart;
 
