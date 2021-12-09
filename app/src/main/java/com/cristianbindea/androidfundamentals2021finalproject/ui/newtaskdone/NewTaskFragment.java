@@ -2,6 +2,7 @@ package com.cristianbindea.androidfundamentals2021finalproject.ui.newtaskdone;
 
 import static com.cristianbindea.androidfundamentals2021finalproject.DataConverter.*;
 
+import android.content.Context;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -19,6 +20,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
@@ -30,6 +32,7 @@ public class NewTaskFragment extends Fragment {
 
     private NewTaskViewModel newTaskViewModel;
     private FragmentNewTaskBinding binding;
+    private Context context;
 
     private TimePicker timeStart;
     private TimePicker timeEnd;
@@ -38,10 +41,11 @@ public class NewTaskFragment extends Fragment {
     private Button buttonSave;
     private Switch switchTime;
 
+
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         binding = FragmentNewTaskBinding.inflate(inflater, container, false);
-        View view = binding.getRoot();
+        View view = inflater.inflate(R.layout.fragment_new_task, container, false);
 
         newTaskViewModel = new ViewModelProvider(this).get(NewTaskViewModel.class);
         initViews(view);
@@ -107,10 +111,17 @@ public class NewTaskFragment extends Fragment {
     }
 
     private void insertTaskDoneInDB(String name, int minuteStart, int minuteEnd, int abs) {
+
         TaskDone taskDone = new TaskDone(name, minuteStart, minuteEnd, abs);
         newTaskViewModel.insertTaskDone(taskDone);
-        requireActivity().onBackPressed();
-        Toast.makeText(getActivity(), "Task added successfully :D", Toast.LENGTH_LONG).show();
+        getParentFragmentManager().popBackStack();
+        Toast.makeText(context, "Task added successfully :D", Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        this.context = context;
     }
 
     @Override

@@ -13,26 +13,32 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.cristianbindea.androidfundamentals2021finalproject.R;
+import com.cristianbindea.androidfundamentals2021finalproject.databinding.AboutFragmentBinding;
+import com.cristianbindea.androidfundamentals2021finalproject.databinding.FragmentAllTasksDoneBinding;
+import com.cristianbindea.androidfundamentals2021finalproject.ui.newtaskdone.NewTaskFragment;
 
 public class AboutFragment extends Fragment {
 
-    private AboutViewModel mViewModel;
+    private AboutViewModel aboutViewModel;
+    private AboutFragmentBinding binding;
 
     public static AboutFragment newInstance() {
         return new AboutFragment();
     }
 
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
-                             @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.about_fragment, container, false);
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+
+        View view = inflater.inflate(R.layout.about_fragment, container, false);
+        binding = AboutFragmentBinding.inflate(inflater, container, false);
+        aboutViewModel = new ViewModelProvider(this).get(AboutViewModel.class);
+
+        return view;
     }
 
     @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(AboutViewModel.class);
-        // TODO: Use the ViewModel
+    public void onDestroyView() {
+        super.onDestroyView();
+        binding = null;
     }
-
 }

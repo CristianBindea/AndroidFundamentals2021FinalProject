@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.cristianbindea.androidfundamentals2021finalproject.R;
 import com.cristianbindea.androidfundamentals2021finalproject.databinding.FragmentAllTasksDoneBinding;
 import com.cristianbindea.androidfundamentals2021finalproject.room.entity.TaskDone;
+import com.cristianbindea.androidfundamentals2021finalproject.ui.newtaskdone.NewTaskFragment;
 
 import java.util.List;
 
@@ -26,8 +27,6 @@ public class AllTasksDoneFragment extends Fragment {
     private FragmentAllTasksDoneBinding binding;
     private RecyclerView recyclerViewTaskDone;
     private TaskDoneListAdapter adapter;
-
-
     private TextView textTitle;
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -43,6 +42,19 @@ public class AllTasksDoneFragment extends Fragment {
             @Override
             public void onChanged(@Nullable String s) {
                 textTitle.setText(s);
+            }
+        });
+
+        binding.fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                NewTaskFragment nextFrag = new NewTaskFragment();
+                getParentFragmentManager().beginTransaction()
+                        .addToBackStack(null)
+                        .replace(R.id.nav_host_fragment_content_main, nextFrag)
+                        .setReorderingAllowed(true)
+                        .commit();
+
             }
         });
 

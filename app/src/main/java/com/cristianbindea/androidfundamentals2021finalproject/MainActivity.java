@@ -21,7 +21,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
-    private AppBarConfiguration mAppBarConfiguration;
+    private AppBarConfiguration appBarConfiguration;
     private ActivityMainBinding binding;
     private TabLayout tabLayout;
 
@@ -32,29 +32,16 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         setSupportActionBar(binding.appBarMain2.toolbar);
-        // TODO: 07.12.2021 Remove FAB from NewTaskFragment
-        // TODO: 08.12.2021 Open NewTaskFragment from FAB
-        // TODO: 08.12.2021 Send data to DataBase from NewTaskFragment or NewTaskFragmentViewModel
-        binding.appBarMain2.fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                // Fragment fragment = new NewTaskFragment();
-                //FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-                //fragmentTransaction.replace(R.id.nav_host_fragment_content_main, fragment);
-                //fragmentTransaction.commit();
-        // TODO: 08.12.2021 I was pretty close with this
-            }
-        });
         DrawerLayout drawer = binding.drawerLayout;
         NavigationView navigationView = binding.navView;
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
-        mAppBarConfiguration = new AppBarConfiguration.Builder(
+        appBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.nav_home, R.id.nav_all_tasks, R.id.nav_contact, R.id.nav_about)
                 .setOpenableLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
-        NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
+        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
     }
 
@@ -68,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onSupportNavigateUp() {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
-        return NavigationUI.navigateUp(navController, mAppBarConfiguration) || super.onSupportNavigateUp();
+        return NavigationUI.navigateUp(navController, appBarConfiguration) || super.onSupportNavigateUp();
 
     }
 }

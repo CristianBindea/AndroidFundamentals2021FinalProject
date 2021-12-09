@@ -11,4 +11,9 @@ public class DataConverter {
         int minutes = time % 60;
         return hours + " : " + minutes;
     }
+    public static String timeMinutes2Hours(int time){
+        int hours = time / 60;
+        int minutes = time % 60;
+        return hours + "h " + minutes+" min";
+    }
 }

@@ -1,11 +1,13 @@
 package com.cristianbindea.androidfundamentals2021finalproject.ui.alltasksdone;
 
+import static com.cristianbindea.androidfundamentals2021finalproject.DataConverter.timeInt2String;
+import static com.cristianbindea.androidfundamentals2021finalproject.DataConverter.timeMinutes2Hours;
+
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -20,6 +22,7 @@ public class TaskDoneListAdapter extends RecyclerView.Adapter<TaskDoneListAdapte
 
     private final LayoutInflater layoutInflater;
     private List<TaskDone> tasksDone; // Cached copy of tasks
+
     TaskDoneListAdapter(Context context) {
         layoutInflater = LayoutInflater.from(context);
     }
@@ -37,9 +40,9 @@ public class TaskDoneListAdapter extends RecyclerView.Adapter<TaskDoneListAdapte
             TaskDone current = tasksDone.get(position);
 
             holder.task_name.setText(current.getNameTaskDone());
-            holder.task_start.setText(Integer.toString(current.getTimeStart()));
-            holder.task_end.setText(Integer.toString(current.getTimeEnd()));
-            holder.task_length.setText(Integer.toString(current.getTimeLength()));
+            holder.task_start.setText(timeInt2String(current.getTimeStart()));
+            holder.task_end.setText(timeInt2String(current.getTimeEnd()));
+            holder.task_length.setText(timeMinutes2Hours(current.getTimeLength()));
         } else {
             // Covers the case of data not being ready yet.
             holder.task_name.setText("No Task Done");

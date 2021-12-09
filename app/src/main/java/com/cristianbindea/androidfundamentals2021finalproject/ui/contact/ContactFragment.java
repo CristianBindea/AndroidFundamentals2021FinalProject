@@ -13,10 +13,13 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.cristianbindea.androidfundamentals2021finalproject.R;
+import com.cristianbindea.androidfundamentals2021finalproject.databinding.ContactFragmentBinding;
+import com.cristianbindea.androidfundamentals2021finalproject.ui.newtaskdone.NewTaskFragment;
 
 public class ContactFragment extends Fragment {
 
-    private ContactViewModel mViewModel;
+    private ContactViewModel contactViewModel;
+    private ContactFragmentBinding binding;
 
     public static ContactFragment newInstance() {
         return new ContactFragment();
@@ -25,14 +28,17 @@ public class ContactFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.contact_fragment, container, false);
+        View view = inflater.inflate(R.layout.contact_fragment, container, false);
+        contactViewModel = new ViewModelProvider(this).get(ContactViewModel.class);
+        binding = ContactFragmentBinding.inflate(inflater, container, false);
+
+        return view;
     }
 
     @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(ContactViewModel.class);
-        // TODO: Use the ViewModel
+    public void onDestroyView() {
+        super.onDestroyView();
+        binding = null;
     }
 
 }
